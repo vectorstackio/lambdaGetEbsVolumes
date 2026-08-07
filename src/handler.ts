@@ -24,10 +24,12 @@ export async function handler() {
         size: volume.Size,
         type: volume.VolumeType,
         encrypted: volume.Encrypted,
+        availabilityZone: volume.AvailabilityZone,
+        created: volume.CreateTime?.toISOString(),
+        name: volume.Tags?.find(tag => tag.Key === 'Name')?.Value,
         attachedInstanceIds:
           volume.Attachments?.map(
-            attachment =>
-              attachment.InstanceId
+            attachment => attachment.InstanceId
           ) ?? []
       }))
 
