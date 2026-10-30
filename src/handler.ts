@@ -43,8 +43,8 @@ export async function handler() {
         volumes
       })
     }
-  } catch(err) {
-    console.error('Failed to list EBS volumes:', err)
+  } catch {
+    console.error('Failed to list EBS volumes')
     return {
       statusCode: 500,
       headers: { 'Content-Type': 'application/json' },
